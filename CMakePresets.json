@@ -2,9 +2,10 @@
     "version": 5,
     "configurePresets": [
         {
-            "name": "conan_debug",
-            "displayName": "conan: debug",
-            "description": "conan: debug",
+            "name": "conan_linux_debug",
+            "displayName": "conan: (linux) debug",
+            "description": "conan: (linux) debug",
+            "generator": "Unix Makefiles",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_MAP_IMPORTED_CONFIG_DEBUG": "Release",
@@ -15,9 +16,9 @@
             "installDir": "${fileDir}/dist/Debug"
         },
         {
-            "name": "conan_release",
-            "displayName": "conan: release",
-            "description": "conan: release",
+            "name": "conan_linux_release",
+            "displayName": "conan: (linux) release",
+            "description": "conan: (linux) release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
@@ -28,22 +29,22 @@
     ],
     "buildPresets": [
         {
-            "name": "conan_debug",
-            "configurePreset": "conan_debug"
+            "name": "conan_linux_debug",
+            "configurePreset": "conan_linux_debug"
         },
         {
-            "name": "conan_release",
-            "configurePreset": "conan_release"
+            "name": "conan_linux_release",
+            "configurePreset": "conan_linux_release"
         }
     ],
     "testPresets": [
         {
-            "name": "conan_debug",
-            "configurePreset": "conan_debug"
+            "name": "conan_linux_debug",
+            "configurePreset": "conan_linux_debug"
         },
         {
-            "name": "conan_release",
-            "configurePreset": "conan_release"
+            "name": "conan_linux_release",
+            "configurePreset": "conan_linux_release"
         }
     ]
 }

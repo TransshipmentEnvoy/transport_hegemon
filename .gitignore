@@ -39,3 +39,4 @@ external
 
 # custom
 .vscode
+CMakeUserPresets.json
