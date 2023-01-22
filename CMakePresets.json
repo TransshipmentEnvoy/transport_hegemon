@@ -19,6 +19,7 @@
             "name": "conan_linux_release",
             "displayName": "conan: (linux) release",
             "description": "conan: (linux) release",
+            "generator": "Unix Makefiles",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
