@@ -6,9 +6,11 @@
             "displayName": "conan: debug",
             "description": "conan: debug",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MAP_IMPORTED_CONFIG_DEBUG": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             },
-            "toolchainFile": "${fileDir}/build/Debug/generators/conan_toolchain.cmake",
+            "toolchainFile": "${fileDir}/build/Release/generators/conan_toolchain.cmake",
             "binaryDir": "${fileDir}/build/Debug",
             "installDir": "${fileDir}/dist/Debug"
         },

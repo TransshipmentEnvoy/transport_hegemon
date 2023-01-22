@@ -9,6 +9,9 @@ class RepoRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeToolchain", "CMakeDeps"
 
+    def build_requirements(self):
+        self.tool_requires("cmake/3.25.0")
+
     def requirements(self):
         # util
         self.requires("fmt/9.1.0")
@@ -25,7 +28,6 @@ class RepoRecipe(ConanFile):
         # render
         self.requires("glfw/3.3.8")
         self.requires("vulkan-loader/1.3.236.0")
-        # self.tool_requires("cmake/3.25.0")
 
     def layout(self):
         cmake_layout(self)

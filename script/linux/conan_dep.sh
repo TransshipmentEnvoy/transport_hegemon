@@ -1,2 +1,1 @@
-conan install . --build missing --install-folder build -s:b "&:build_type=Debug" -s:h "&:build_type=Debug" -pr:b default
-conan install . --build missing --install-folder build -s:b "&:build_type=Release" -s:h "&:build_type=Release" -pr:b default
+conan install . --build missing --install-folder build -pr:b default
