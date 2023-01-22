@@ -1,1 +1,1 @@
-conan install . --build missing --install-folder build -pr:b default
+conan install . --build missing --install-folder build -pr:h ./buildsys/conan/profile/linux_default -pr:b ./buildsys/conan/profile/linux_default
