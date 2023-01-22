@@ -29,5 +29,16 @@ class RepoRecipe(ConanFile):
         self.requires("glfw/3.3.8")
         self.requires("vulkan-loader/1.3.236.0")
 
+        # logic
+        self.requires("flecs/3.1.3")
+
+    def configure(self):
+        self.options["flecs"].shared = True
+
     def layout(self):
         cmake_layout(self)
+
+    def imports(self):
+        if self.settings.os == "Linux":
+            self.copy("*.so", "dist/dep/lib", "@libdirs")
+            self.copy("*.so.*", "dist/dep/lib", "@libdirs")

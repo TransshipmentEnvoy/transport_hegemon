@@ -40,3 +40,4 @@ external
 # custom
 .vscode
 CMakeUserPresets.json
+conan_imports_manifest.txt

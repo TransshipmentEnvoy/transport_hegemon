@@ -52,6 +52,9 @@ message(STATUS "use vulkan_headers: ${Vulkan_INCLUDE_DIR}")
 
 find_package(glfw3 REQUIRED)
 message(STATUS "use glfw3: ${glfw3_DIR}")
+
+find_package(flecs REQUIRED)
+message(STATUS "use flecs: ${flecs_DIR}")
 # <<<<<<
 
 # compile & link property
@@ -73,6 +76,7 @@ target_link_libraries(transport_hegemon
         tsl::robin_map
         Vulkan::Vulkan
         glfw
+        flecs::flecs
 )
 target_set_warning(transport_hegemon)
 if(LTO_SUPPORTED)
