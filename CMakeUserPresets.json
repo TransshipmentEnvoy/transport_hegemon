@@ -1,0 +1,47 @@
+{
+    "version": 5,
+    "configurePresets": [
+        {
+            "name": "conan_debug",
+            "displayName": "conan: debug",
+            "description": "conan: debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "toolchainFile": "${fileDir}/build/Debug/generators/conan_toolchain.cmake",
+            "binaryDir": "${fileDir}/build/Debug",
+            "installDir": "${fileDir}/dist/Debug"
+        },
+        {
+            "name": "conan_release",
+            "displayName": "conan: release",
+            "description": "conan: release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "toolchainFile": "${fileDir}/build/Release/generators/conan_toolchain.cmake",
+            "binaryDir": "${fileDir}/build/Release",
+            "installDir": "${fileDir}/dist/Release"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "conan_debug",
+            "configurePreset": "conan_debug"
+        },
+        {
+            "name": "conan_release",
+            "configurePreset": "conan_release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "conan_debug",
+            "configurePreset": "conan_debug"
+        },
+        {
+            "name": "conan_release",
+            "configurePreset": "conan_release"
+        }
+    ]
+}
