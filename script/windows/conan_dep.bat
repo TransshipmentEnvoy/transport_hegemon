@@ -1,0 +1,2 @@
+conan install . --build missing --install-folder build -pr:h ./buildsys/conan/profile/windows_default -pr:b ./buildsys/conan/profile/windows_default
+conan install . --build missing --install-folder build -pr:h ./buildsys/conan/profile/windows_debug -pr:b ./buildsys/conan/profile/windows_debug

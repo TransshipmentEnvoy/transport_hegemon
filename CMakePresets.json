@@ -12,8 +12,7 @@
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             },
             "toolchainFile": "${fileDir}/build/Release/generators/conan_toolchain.cmake",
-            "binaryDir": "${fileDir}/build/Debug",
-            "installDir": "${fileDir}/dist/Debug"
+            "binaryDir": "${fileDir}/build/Debug"
         },
         {
             "name": "conan_linux_release",
@@ -25,7 +24,20 @@
             },
             "toolchainFile": "${fileDir}/build/Release/generators/conan_toolchain.cmake",
             "binaryDir": "${fileDir}/build/Release",
-            "installDir": "${fileDir}/dist/Release"
+            "installDir": "${fileDir}/dist"
+        },
+        {
+            "name": "conan_windows",
+            "displayName": "conan: (windows) multi-config",
+            "description": "conan: (windows) multi-config",
+            "architecture": "x64",
+            "generator": "Visual Studio 16 2019",
+            "cacheVariables": {
+                "CMAKE_POLICY_DEFAULT_CMP0091": "NEW"
+            },
+            "toolchainFile": "${fileDir}\\build\\generators\\conan_toolchain.cmake",
+            "binaryDir": "${fileDir}\\build",
+            "installDir": "${fileDir}\\dist"
         }
     ],
     "buildPresets": [
@@ -36,6 +48,16 @@
         {
             "name": "conan_linux_release",
             "configurePreset": "conan_linux_release"
+        },
+        {
+            "name": "conan_windows_debug",
+            "configurePreset": "conan_windows",
+            "configuration": "Debug"
+        },
+        {
+            "name": "conan_windows_release",
+            "configurePreset": "conan_windows",
+            "configuration": "Release"
         }
     ],
     "testPresets": [
@@ -46,6 +68,16 @@
         {
             "name": "conan_linux_release",
             "configurePreset": "conan_linux_release"
+        },
+        {
+            "name": "conan_windows_debug",
+            "configurePreset": "conan_windows",
+            "configuration": "Debug"
+        },
+        {
+            "name": "conan_windows_release",
+            "configurePreset": "conan_windows",
+            "configuration": "Release"
         }
     ]
 }
