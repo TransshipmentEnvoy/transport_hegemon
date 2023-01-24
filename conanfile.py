@@ -1,5 +1,8 @@
 from conan import ConanFile
 from conan.tools.cmake import cmake_layout
+from conan.tools import files
+
+import os
 
 
 class RepoRecipe(ConanFile):
@@ -14,11 +17,13 @@ class RepoRecipe(ConanFile):
 
     def requirements(self):
         # util
+        self.requires("boost/1.81.0")
+
         self.requires("fmt/9.1.0")
         self.requires("spdlog/1.11.0")
 
         self.requires("cli11/2.3.2")
-        
+
         self.requires("range-v3/0.12.0")
         self.requires("tsl-robin-map/1.2.1")
 
@@ -37,10 +42,22 @@ class RepoRecipe(ConanFile):
         self.requires("flecs/3.1.3")
 
     def configure(self):
+        self.options["boost"].shared = True
+
         self.options["flecs"].shared = True
 
     def layout(self):
         cmake_layout(self)
+
+    def generate(self):
+        proc_list = [
+            ("boost_filesystem.dll", self.dependencies["boost"].cpp_info.components["filesystem"].bindir),
+            ("boost_nowide.dll", self.dependencies["boost"].cpp_info.components["nowide"].bindir),
+        ]
+
+        if self.settings.os == "Windows":
+            for proc_lib, proc_bindir in proc_list:
+                files.copy(self, proc_lib, proc_bindir, os.path.join(self.build_folder, str(self.settings.build_type)))
 
     def package_info(self):
         print(self.env_info)

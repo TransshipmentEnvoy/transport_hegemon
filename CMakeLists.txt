@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.20..3.24)
+cmake_minimum_required (VERSION 3.21..3.24)
 
 # ====== sanity check >>>>>>
 if (CMAKE_BINARY_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -32,6 +32,9 @@ include(warning)
 # <<<<<<
 
 # ====== dependency >>>>>>
+find_package(Boost REQUIRED COMPONENTS headers filesystem nowide)
+message(STATUS "use boost: ${Boost_DIR}")
+
 find_package(fmt REQUIRED)
 message(STATUS "use fmt: ${fmt_DIR}")
 
@@ -75,6 +78,7 @@ target_sources(transport_hegemon PRIVATE
 )
 target_link_libraries(transport_hegemon
     PRIVATE
+        Boost::headers Boost::filesystem Boost::nowide
         fmt::fmt
         spdlog::spdlog
         CLI11::CLI11
