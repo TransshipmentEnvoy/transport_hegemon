@@ -14,9 +14,13 @@
 
 #include <boost/dll/runtime_symbol_info.hpp>
 
+#include <Eigen/Dense>
+
 #include <vulkan/vulkan.h>
 
 #include <GLFW/glfw3.h>
+
+#include <vk_mem_alloc.h>
 
 namespace nowide {
 using namespace boost::nowide;

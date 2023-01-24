@@ -50,20 +50,26 @@ message(STATUS "use range-v3: ${range-v3_DIR}")
 find_package(tsl-robin-map REQUIRED)
 message(STATUS "use tsl-robin-map: ${tsl-robin-map_DIR}")
 
-find_package(Vulkan REQUIRED)
-message(STATUS "use vulkan_headers: ${Vulkan_INCLUDE_DIR}")
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+message(STATUS "use Eigen3: ${Eigen3_DIR}")
 
 find_package(glfw3 REQUIRED)
 message(STATUS "use glfw3: ${glfw3_DIR}")
 
-find_package(flecs REQUIRED)
-message(STATUS "use flecs: ${flecs_DIR}")
+find_package(Vulkan REQUIRED)
+message(STATUS "use vulkan_headers: ${Vulkan_INCLUDE_DIR}")
 
-find_package(shaderc REQUIRED) # use conan
+find_package(shaderc REQUIRED) # provided by conan
 message(STATUS "use shaderc: ${shaderc_DIR}")
 cmake_path(SET glslc_PATH_HINT NORMALIZE ${shaderc_INCLUDE_DIR}/../bin)
 find_program(GLSLC glslc REQUIRED HINTS ${glslc_PATH_HINT})
 message(STATUS "use shaderc/glslc: ${GLSLC}")
+
+find_package(vulkan-memory-allocator REQUIRED)
+message(STATUS "use vulkan-memory-allocator: ${vulkan-memory-allocator_DIR}")
+
+find_package(flecs REQUIRED)
+message(STATUS "use flecs: ${flecs_DIR}")
 # <<<<<<
 
 # compile & link property
@@ -84,8 +90,10 @@ target_link_libraries(transport_hegemon
         CLI11::CLI11
         range-v3::range-v3
         tsl::robin_map
-        Vulkan::Vulkan
+        Eigen3::Eigen
         glfw
+        Vulkan::Vulkan
+        vulkan-memory-allocator::vulkan-memory-allocator
         flecs::flecs
 )
 target_set_warning(transport_hegemon)

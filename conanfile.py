@@ -37,6 +37,7 @@ class RepoRecipe(ConanFile):
         self.requires("vulkan-validationlayers/1.3.236.0")
         self.requires("glslang/1.3.236.0")
         self.requires("shaderc/2022.4@transport_hegemon/dep")
+        self.requires("vulkan-memory-allocator/3.0.1")
 
         # logic
         self.requires("flecs/3.1.3")
@@ -53,6 +54,7 @@ class RepoRecipe(ConanFile):
         proc_list = [
             ("boost_filesystem.dll", self.dependencies["boost"].cpp_info.components["filesystem"].bindir),
             ("boost_nowide.dll", self.dependencies["boost"].cpp_info.components["nowide"].bindir),
+            ("vulkan-1.dll", self.dependencies["vulkan-loader"].cpp_info.bindir),
         ]
 
         if self.settings.os == "Windows":
