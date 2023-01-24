@@ -31,7 +31,7 @@ class RepoRecipe(ConanFile):
         self.requires("vulkan-loader/1.3.236.0")
         self.requires("vulkan-validationlayers/1.3.236.0")
         self.requires("glslang/1.3.236.0")
-        self.requires("shaderc/2022.4@transshipment_hegemon/dep")
+        self.requires("shaderc/2022.4@transport_hegemon/dep")
 
         # logic
         self.requires("flecs/3.1.3")
