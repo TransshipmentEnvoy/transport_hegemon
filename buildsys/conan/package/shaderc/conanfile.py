@@ -22,14 +22,6 @@ class ShadercConan(ConanFile):
     }
     default_options = {"shared": False, "fPIC": True}
 
-    @property
-    def _source_subfolder(self):
-        return "source_subfolder"
-
-    @property
-    def _build_subfolder(self):
-        return "build_subfolder"
-
     def export_sources(self):
         patch_file_list = ["patch/fix-cmake.patch"]
         for patch_file in patch_file_list:
@@ -97,7 +89,7 @@ class ShadercConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("LICENSE", dst="licenses", src=self._source_subfolder)
+        self.copy("LICENSE", dst="licenses", src=self.source_folder)
         cmake = CMake(self)
         cmake.install()
         files.rmdir(self, os.path.join(self.package_folder, "lib", "pkgconfig"))
