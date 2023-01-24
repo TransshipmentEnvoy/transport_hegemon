@@ -55,6 +55,12 @@ message(STATUS "use glfw3: ${glfw3_DIR}")
 
 find_package(flecs REQUIRED)
 message(STATUS "use flecs: ${flecs_DIR}")
+
+find_package(shaderc REQUIRED) # use conan
+message(STATUS "use shaderc: ${shaderc_DIR}")
+cmake_path(SET glslc_PATH_HINT NORMALIZE ${shaderc_INCLUDE_DIR}/../bin)
+find_program(GLSLC glslc REQUIRED HINTS ${glslc_PATH_HINT})
+message(STATUS "use shaderc/glslc: ${GLSLC}")
 # <<<<<<
 
 # compile & link property

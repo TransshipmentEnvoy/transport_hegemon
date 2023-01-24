@@ -27,7 +27,11 @@ class RepoRecipe(ConanFile):
 
         # render
         self.requires("glfw/3.3.8")
+        self.requires("vulkan-headers/1.3.236.0")
         self.requires("vulkan-loader/1.3.236.0")
+        self.requires("vulkan-validationlayers/1.3.236.0")
+        self.requires("glslang/1.3.236.0")
+        self.requires("shaderc/2022.4@transshipment_hegemon/dep")
 
         # logic
         self.requires("flecs/3.1.3")
@@ -38,7 +42,5 @@ class RepoRecipe(ConanFile):
     def layout(self):
         cmake_layout(self)
 
-    def imports(self):
-        if self.settings.os == "Linux":
-            self.copy("*.so", "dist/dep/lib", "@libdirs")
-            self.copy("*.so.*", "dist/dep/lib", "@libdirs")
+    def package_info(self):
+        print(self.env_info)
